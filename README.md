@@ -4,15 +4,15 @@ Welcome to Roshan-blogging webapp! This web application is designed to help you 
 
 ## Features
 
-1. # User-friendly Interface: Clean and intuitive interface for easy navigation.
+1. User-friendly Interface: Clean and intuitive interface for easy navigation.
 
-2. # Create and Publish Posts: Write and publish your own blog posts effortlessly.
+2. Create and Publish Posts: Write and publish your own blog posts effortlessly.
 
-3. # Edit and Delete Posts: Manage your posts with editing and deletion capabilities.
+3. Edit and Delete Posts: Manage your posts with editing and deletion capabilities.
 
-4. # User Authentication: Secure user authentication system for managing user accounts.
+4. User Authentication: Secure user authentication system for managing user accounts.
 
-5. # Responsive Design: Mobile-friendly design ensures a seamless experience across devices.
+5. Responsive Design: Mobile-friendly design ensures a seamless experience across devices.
 
 ## Technologies Used
 
