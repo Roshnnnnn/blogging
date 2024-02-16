@@ -6,9 +6,11 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const context = useContext(myContext);
-  const { mode } = context;
+  const { mode, getAllBlog, deleteBlogs } = context;
 
   const navigate = useNavigate();
+
+  console.log(getAllBlog);
 
   //* Logout Function
   const logout = () => {
@@ -165,73 +167,98 @@ function Dashboard() {
                   </tr>
                 </thead>
 
-                {/* tbody  */}
-                <tbody>
-                  <tr
-                    className=" border-b-2"
-                    style={{
-                      background: mode === "dark" ? "rgb(30, 41, 59)" : "white",
-                    }}
-                  >
-                    {/* S.No   */}
-                    <td
-                      style={{ color: mode === "dark" ? "white" : "black" }}
-                      className="px-6 py-4"
-                    >
-                      {"1."}
-                    </td>
+                {getAllBlog.length > 0 ? (
+                  <>
+                    {getAllBlog.map((item, index) => {
+                      console.log(item);
+                      const { thumbnail, date, id } = item;
+                      return (
+                        <tbody key={index}>
+                          <tr
+                            className=" border-b-2"
+                            style={{
+                              background:
+                                mode === "dark" ? "rgb(30, 41, 59)" : "white",
+                            }}
+                          >
+                            {/* S.No   */}
+                            <td
+                              style={{
+                                color: mode === "dark" ? "white" : "black",
+                              }}
+                              className="px-6 py-4"
+                            >
+                              {index + 1}.
+                            </td>
 
-                    {/* Blog Thumbnail  */}
-                    <th
-                      style={{ color: mode === "dark" ? "white" : "black" }}
-                      scope="row"
-                      className="px-6 py-4 font-medium "
-                    >
-                      {/* thumbnail  */}
-                      <img
-                        className="w-16 rounded-lg"
-                        src={
-                          "https://as2.ftcdn.net/v2/jpg/04/44/95/35/1000_F_444953546_nAIAT8UUJDj4ibXNdy2VR4WZTJRy1Psd.jpg"
-                        }
-                        alt="thumbnail"
-                      />
-                    </th>
+                            {/* Blog Thumbnail  */}
+                            <th
+                              style={{
+                                color: mode === "dark" ? "white" : "black",
+                              }}
+                              scope="row"
+                              className="px-6 py-4 font-medium "
+                            >
+                              {/* thumbnail  */}
+                              <img
+                                className="w-16 rounded-lg"
+                                src={thumbnail}
+                                alt="thumbnail"
+                              />
+                            </th>
 
-                    {/* Blog Title  */}
-                    <td
-                      style={{ color: mode === "dark" ? "white" : "black" }}
-                      className="px-6 py-4"
-                    >
-                      {"React Introduction"}
-                    </td>
+                            {/* Blog Title  */}
+                            <td
+                              style={{
+                                color: mode === "dark" ? "white" : "black",
+                              }}
+                              className="px-6 py-4"
+                            >
+                              {item.blogs.title}
+                            </td>
 
-                    {/* Blog Category  */}
-                    <td
-                      style={{ color: mode === "dark" ? "white" : "black" }}
-                      className="px-6 py-4"
-                    >
-                      {"reactjs"}
-                    </td>
+                            {/* Blog Category  */}
+                            <td
+                              style={{
+                                color: mode === "dark" ? "white" : "black",
+                              }}
+                              className="px-6 py-4"
+                            >
+                              {item.blogs.category}
+                            </td>
 
-                    {/* Blog Date  */}
-                    <td
-                      style={{ color: mode === "dark" ? "white" : "black" }}
-                      className="px-6 py-4"
-                    >
-                      {"Jul 25, 2023"}
-                    </td>
+                            {/* Blog Date  */}
+                            <td
+                              style={{
+                                color: mode === "dark" ? "white" : "black",
+                              }}
+                              className="px-6 py-4"
+                            >
+                              {date}
+                            </td>
 
-                    {/* Delete Blog  */}
-                    <td
-                      style={{ color: mode === "dark" ? "white" : "black" }}
-                      className="px-6 py-4"
-                    >
-                      <button className=" px-4 py-1 rounded-lg text-white font-bold bg-red-500">
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
+                            {/* Delete Blog  */}
+                            <td
+                              onClick={() => deleteBlogs(id)}
+                              style={{
+                                color: mode === "dark" ? "white" : "black",
+                              }}
+                              className="px-6 py-4"
+                            >
+                              <button className=" px-4 py-1 rounded-lg text-white font-bold bg-red-500">
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      );
+                    })}
+                  </>
+                ) : (
+                  <>
+                    <h1>Not Found</h1>
+                  </>
+                )}
               </table>
             </div>
           </div>
