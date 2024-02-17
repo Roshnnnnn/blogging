@@ -79,6 +79,10 @@ export default function AdminLogin() {
             Admin Login
           </Typography>
         </CardHeader>
+        <div className="flex justify-center">
+          <p>id:-testuser@gmail.com</p>||
+          <p>pass:-1234567890</p>
+        </div>
 
         {/* CardBody */}
         <CardBody>
